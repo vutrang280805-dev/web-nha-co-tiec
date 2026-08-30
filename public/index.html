@@ -36,8 +36,8 @@ input,textarea,button,select{font-family:inherit}
 
   
 
-    <sc-if value="{{ isDesktopNav }}" hint-placeholder-val="{{ true }}">
-      <div onMouseEnter="{{ openMenu }}" onMouseLeave="{{ scheduleCloseMenu }}" style="{{ dropStyle }}position:absolute;left:0;right:0;top:100%;border-top:1px solid #EFE7DA;background:#fff;box-shadow:0 24px 40px -24px rgba(30,34,41,.28)">
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid #EFE7DA;background:#fff;box-shadow:0 24px 40px -24px rgba(30,34,41,.28)">
         <div style="max-width:1240px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:28px">
           <div>
             <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9A741A;margin-bottom:14px;font-weight:700">Thiệp cưới theo gu</div>
@@ -68,74 +68,36 @@ input,textarea,button,select{font-family:inherit}
           </div>
         </div>
       </div>
-    </sc-if>
-
-    <sc-if value="{{ isDesktopNav }}" hint-placeholder-val="{{ true }}">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: clamp(10px,2vw,28px); flex-wrap: wrap">
+    </sc-if><div style="max-width: 1240px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: clamp(10px,2vw,28px); flex-wrap: wrap; opacity: 1; overflow: visible">
       <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;cursor:pointer;flex:0 0 auto">
         <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#D4AF37,#9A741A);display:grid;place-items:center;color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700">N</div>
         <div style="line-height:1.1">
           <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#1E2229">Nhà Có Tiệc</div>
+          
         </div>
       </div>
 
       <nav style="display:flex;align-items:center;gap:2px 4px;flex-wrap:wrap;font-size:13.5px;color:#2D3142">
-        <div onMouseEnter="{{ openMenu }}" onMouseLeave="{{ scheduleCloseMenu }}" onClick="{{ toggleMenu }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Kho Mẫu <span style="display:inline-block;transition:transform .18s ease;transform:{{ arrowRotate }}">▾</span></div>
+        <div onClick="{{ toggleMenu }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Kho Mẫu ▾</div>
         <div onClick="{{ goEditor }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Studio</div>
         <div onClick="{{ goAdmin }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Quản lý</div>
         <div onClick="{{ goPricing }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Bảng giá</div>
         <div onClick="{{ goBlog }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Cẩm nang</div>
-        <div onClick="{{ goFaq }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Hỗ trợ</div>
+        <div onClick="{{ goFaq }}" style="padding: 8px 10px; border-radius: 10px; cursor: pointer; font-weight: 700; white-space: nowrap" style-hover="background:#FAF3E4;color:#9A741A">Hỗ trợ ▾</div>
       </nav>
 
-      <div style="flex:1 1 0;min-width:0"></div>
-      <div style="display:flex;align-items:center;gap:8px;background:#F7F2E8;border:1px solid #EBDFC8;border-radius:999px;padding:8px 14px;flex:0 1 190px;min-width:90px">
-        <span style="opacity:.5;font-size:13px;flex:0 0 auto">🔍</span>
-        <input value="{{ q }}" onChange="{{ setQ }}" placeholder="Tìm mẫu..." style="border: none; background: transparent; outline: none; font-size: 12px; width: 100%; min-width:0; color: #1E2229; font-weight: 700">
-      </div>
-      <div onClick="{{ goAuth }}" style="padding: 9px 16px; border: 1px solid #DCD2C0; border-radius: 999px; font-size: 13.5px; cursor: pointer; color: #2D3142; font-weight: 700; white-space:nowrap; flex:0 0 auto" style-hover="border-color:#D4AF37;color:#9A741A">Đăng Nhập</div>
-    </div>
-    </sc-if>
-
-    <sc-if value="{{ isMobileNav }}" hint-placeholder-val="{{ false }}">
-    <div style="max-width:1240px;margin:0 auto;padding:11px 14px;display:flex;align-items:center;gap:10px">
-      <div onClick="{{ toggleMobileNav }}" style="width:38px;height:38px;border-radius:10px;background:#F7F2E8;display:grid;place-items:center;font-size:18px;cursor:pointer;flex:0 0 auto;color:#2D3142">{{ mobileNavIcon }}</div>
-      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:8px;cursor:pointer;flex:1;min-width:0">
-        <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#D4AF37,#9A741A);display:grid;place-items:center;color:#fff;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex:0 0 auto">N</div>
-        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#1E2229;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Nhà Có Tiệc</div>
-      </div>
-      <div onClick="{{ toggleMobileSearch }}" style="width:38px;height:38px;border-radius:10px;background:#F7F2E8;display:grid;place-items:center;font-size:16px;cursor:pointer;flex:0 0 auto">🔍</div>
-      <div onClick="{{ goAuth }}" style="width:38px;height:38px;border-radius:10px;background:#F7F2E8;display:grid;place-items:center;font-size:16px;cursor:pointer;flex:0 0 auto">👤</div>
-    </div>
-    <sc-if value="{{ mobileSearchOpen }}" hint-placeholder-val="{{ false }}">
-      <div style="padding:0 14px 12px">
-        <div style="display:flex;align-items:center;gap:8px;background:#F7F2E8;border:1px solid #EBDFC8;border-radius:999px;padding:9px 14px">
+      <div onClick="{{ goAuth }}" style="padding: 9px 16px; border: 1px solid #DCD2C0; border-radius: 999px; font-size: 13.5px; cursor: pointer; color: #2D3142; font-weight: 700" style-hover="border-color:#D4AF37;color:#9A741A">Đăng Nhập</div><div style="display:flex;align-items:center;gap:8px;background:#F7F2E8;border:1px solid #EBDFC8;border-radius:999px;padding:8px 14px;min-width:190px">
           <span style="opacity:.5;font-size:13px">🔍</span>
-          <input value="{{ q }}" onChange="{{ setQ }}" placeholder="Tìm mẫu: Luxury Gold, Vintage..." style="border:none;background:transparent;outline:none;font-size:13.5px;width:100%;color:#1E2229" autofocus="true">
-        </div>
+          <input value="{{ q }}" onChange="{{ setQ }}" placeholder="Tìm mẫu: Luxury Gold, Vintage..." style="border: none; background: transparent; outline: none; font-size: 12px; width: 100%; color: #1E2229; font-weight: 700">
+        </div><div style="flex:1 1 40px"></div>
+
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between">
+        
+        
+        
+        
       </div>
-    </sc-if>
-    <sc-if value="{{ mobileNavOpen }}" hint-placeholder-val="{{ false }}">
-      <div style="border-top:1px solid #EFE7DA;padding:14px;display:flex;flex-direction:column;gap:4px;font-size:15px;color:#2D3142">
-        <div onClick="{{ tapKhoMau }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between" style-hover="background:#FAF3E4;color:#9A741A">Kho Mẫu Thiệp <span>▾</span></div>
-        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="padding:0 10px 6px;display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:#4B5563">
-            <div onClick="{{ goTemplates }}" style="cursor:pointer">✨ Luxury Champagne Gold</div>
-            <div onClick="{{ goTemplates }}" style="cursor:pointer">🌿 Vintage hoa lá</div>
-            <div onClick="{{ goTemplates }}" style="cursor:pointer">🏮 Truyền thống Hỷ Sự</div>
-            <div onClick="{{ goTemplates }}" style="cursor:pointer">🆓 Mẫu miễn phí</div>
-          </div>
-        </sc-if>
-        <div onClick="{{ tapEditor }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600" style-hover="background:#FAF3E4;color:#9A741A">Studio Tạo Thiệp</div>
-        <div onClick="{{ tapAdmin }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600" style-hover="background:#FAF3E4;color:#9A741A">Quản Lý Thiệp</div>
-        <div onClick="{{ tapPricing }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600" style-hover="background:#FAF3E4;color:#9A741A">Bảng Giá</div>
-        <div onClick="{{ tapBlog }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600" style-hover="background:#FAF3E4;color:#9A741A">Cẩm Nang Cưới</div>
-        <div onClick="{{ tapFaq }}" style="padding:13px 10px;border-radius:10px;cursor:pointer;font-weight:600" style-hover="background:#FAF3E4;color:#9A741A">Hỗ Trợ / FAQ</div>
-        <div onClick="{{ tapAuth }}" style="margin-top:8px;padding:14px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;text-align:center;font-weight:600;cursor:pointer">Đăng nhập / Đăng ký</div>
-      </div>
-    </sc-if>
-    </sc-if>
-  </header>
+    </div></header>
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <main>
@@ -143,9 +105,9 @@ input,textarea,button,select{font-family:inherit}
       
     <div style="max-width: 1240px; margin: 0 auto; padding: clamp(40px,6vw,84px) 20px; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr)); gap: clamp(28px,5vw,60px); align-items: center">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #EBDFC8;border-radius:999px;padding:7px 15px;font-size:12.5px;color:#9A741A;margin-bottom:22px">{{ siteBadge }}</div>
-          <h1 style="font-family: 'Dancing Script',cursive; font-size: clamp(34px,7vw,60px); line-height: 1.08; color: #1E2229; margin: 0 0 20px; font-weight: 700; text-wrap: balance; font-style: italic">{{ heroTitleMain }}<br><em style="color:#9A741A;font-style:italic">{{ heroTitleEmphasis }}</em></h1>
-          <p style="font-family: Times New Roman; font-size: clamp(15px,1.4vw,18px); line-height: 1.75; margin: 0 0 30px; max-width: 520px; text-wrap: pretty">{{ heroSubtitle }}</p>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #EBDFC8;border-radius:999px;padding:7px 15px;font-size:12.5px;color:#9A741A;margin-bottom:22px">🏆 Nền tảng thiệp số được yêu thích nhất 2026</div>
+          <h1 style="font-family: 'Dancing Script',cursive; font-size: clamp(34px,7vw,60px); line-height: 1.08; color: #1E2229; margin: 0 0 20px; font-weight: 700; text-wrap: balance; font-style: italic">Tấm thiệp cưới của bạn,<br><em style="color:#9A741A;font-style:italic">gửi bằng một đường link</em></h1>
+          <p style="font-family: Times New Roman; font-size: clamp(15px,1.4vw,18px); line-height: 1.75; margin: 0 0 30px; max-width: 520px; text-wrap: pretty">Chọn mẫu, điền thông tin, thiệp tự render ngay trước mắt bạn. Khách mời mở link trên Zalo là thấy phong bì 3D bật ra, nhạc nền dịu dàng và nút chỉ đường tới hôn trường.</p>
           <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px">
             <div onClick="{{ goTemplates }}" style="padding: 16px 30px; border-radius: 999px; background: linear-gradient(135deg,#D4AF37,#B98E22); color: #fff; font-weight: 600; font-size: 16px; cursor: pointer; box-shadow: 0 14px 30px rgba(212,175,55,.35); font-family: Be Vietnam Pro" style-hover="box-shadow:0 18px 38px rgba(212,175,55,.5)">Chọn mẫu miễn phí →</div>
             <div onClick="{{ goCard }}" style="padding: 16px 30px; border-radius: 999px; background: #fff; border: 1px solid #DCD2C0; color: #2D3142; font-weight: 500; font-size: 16px; cursor: pointer; font-family: Be Vietnam Pro" style-hover="border-color:#D4AF37;color:#9A741A">Xem thiệp mẫu Long &amp; Phương</div>
@@ -182,8 +144,8 @@ input,textarea,button,select{font-family:inherit}
     <section style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) 20px">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px">
         <div>
-          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700; font-family: Be Vietnam Pro">{{ featuredKicker }}</div>
-          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 100">{{ featuredTitle }}</h2>
+          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700; font-family: Be Vietnam Pro">Bộ sưu tập nổi bật</div>
+          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 100">Chọn mẫu thiệp trong 10 giây</h2>
         </div>
         <div onClick="{{ goTemplates }}" style="padding: 12px 22px; border: 1px solid #DCD2C0; border-radius: 999px; cursor: pointer; font-size: 14px; color: #2D3142; white-space: nowrap; font-family: Be Vietnam Pro" style-hover="border-color:#D4AF37;color:#9A741A">Xem toàn bộ kho mẫu →</div>
       </div>
@@ -196,7 +158,7 @@ input,textarea,button,select{font-family:inherit}
         <sc-for list="{{ featured }}" as="t" hint-placeholder-count="6">
           <div onClick="{{ goCard }}" style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 22px 44px -22px rgba(30,34,41,.3)">
             <div style="position:relative;aspect-ratio:3/4;background:#F7F2E8">
-              <image-slot id="{{ t.slot }}" shape="rect" fit="contain" placeholder="Ảnh mẫu thiệp" src="{{ t.slotSrc }}"></image-slot>
+              <image-slot id="{{ t.slot }}" shape="rect" placeholder="Ảnh mẫu thiệp"></image-slot>
               <div style="position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;color:#fff;background:{{ t.badgeBg }}">{{ t.badge }}</div>
               <div style="position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:13px">🤍</div>
             </div>
@@ -216,9 +178,9 @@ input,textarea,button,select{font-family:inherit}
     <section style="background: linear-gradient(180deg, #FAF3E4, #FFFDF9)">
       <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,80px) 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,5vw,56px);align-items:center">
         <div>
-          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 12px; font-weight: 700">{{ demoKicker }}</div>
-          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0 0 16px; font-size: 20px; font-weight: 400">{{ demoTitle }}</h2>
-          <p style="font-size:16px;line-height:1.75;margin:0 0 24px;max-width:480px;text-wrap:pretty">{{ demoBody }}</p>
+          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 12px; font-weight: 700">Trải nghiệm trực tiếp</div>
+          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0 0 16px; font-size: 20px; font-weight: 400">Bấm vỡ dấu sáp niêm phong</h2>
+          <p style="font-size:16px;line-height:1.75;margin:0 0 24px;max-width:480px;text-wrap:pretty">Đây chính là khoảnh khắc khách mời của bạn nhìn thấy đầu tiên. Chạm thử con dấu sáp bên cạnh để cảm nhận hiệu ứng mở phong bì 3D.</p>
           <div onClick="{{ goCard }}" style="display:inline-block;padding:14px 26px;border-radius:999px;background:#1E2229;color:#F7F2E8;font-size:15px;cursor:pointer" style-hover="background:#2D3142">Mở thiệp mẫu đầy đủ →</div>
         </div>
         <div style="display:grid;place-items:center;min-height:300px">
@@ -234,8 +196,8 @@ input,textarea,button,select{font-family:inherit}
 
     <section style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) 20px">
       <div style="text-align:center;margin-bottom:44px">
-        <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">{{ stepsKicker }}</div>
-        <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">{{ stepsTitle }}</h2>
+        <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">Quy trình</div>
+        <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">4 bước là có thiệp gửi khách</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:22px">
         <div style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;padding:26px">
@@ -264,8 +226,8 @@ input,textarea,button,select{font-family:inherit}
     <section style="background:#FFFDF9;border-top:1px solid #EFE7DA;border-bottom:1px solid #EFE7DA">
       <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) 20px">
         <div style="text-align:center;margin-bottom:44px">
-          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">{{ whyKicker }}</div>
-          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">{{ whyTitle }}</h2>
+          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">Khác biệt</div>
+          <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">Vì sao cặp đôi chọn Nhà Có Thiệp ?</h2>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
           <div style="display:flex;gap:16px;padding:24px;background:#fff;border:1px solid #EFE7DA;border-radius:18px">
@@ -298,8 +260,8 @@ input,textarea,button,select{font-family:inherit}
 
     <section style="max-width: 1240px; margin: 0 auto; padding: clamp(48px,6vw,84px) 20px">
       <div style="text-align:center;margin-bottom:44px">
-        <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">{{ testiKicker }}</div>
-        <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">{{ testiTitle }}</h2>
+        <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #9A741A; margin-bottom: 10px; font-weight: 700">Câu chuyện thật</div>
+        <h2 style="font-family: Times New Roman; color: #1E2229; margin: 0; font-size: 20px; font-weight: 400">Những đám cưới đã dùng thiệp của chúng tôi</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:22px">
         <div style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;overflow:hidden">
@@ -332,8 +294,8 @@ input,textarea,button,select{font-family:inherit}
     <section id="pricing" style="background-color: #FAF3E4">
       <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,6vw,84px) 20px">
         <div style="text-align:center;margin-bottom:44px;color:#F7F2E8">
-          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #D4AF37; margin-bottom: 10px; font-weight: 700">{{ pricingKicker }}</div>
-          <h2 style="font-family: Times New Roman; font-size: 20px; margin: 0; color: #030303; font-weight: 400">{{ pricingTitle }}</h2>
+          <div style="font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: #D4AF37; margin-bottom: 10px; font-weight: 700">Bảng giá minh bạch</div>
+          <h2 style="font-family: Times New Roman; font-size: 20px; margin: 0; color: #030303; font-weight: 400">Miễn phí để thử, PRO khi cần trọn vẹn</h2>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:22px">
           <div style="border: 1px solid #3A3F4C; border-radius: 20px; padding: 30px; color: #E8E4DC; background-color: #32446D">
@@ -348,7 +310,7 @@ input,textarea,button,select{font-family:inherit}
               <div>✅ VietQR 1 tài khoản</div>
               <div style="opacity:.5">❌ Google Maps tương tác</div>
               <div style="opacity:.5">❌ RSVP tối đa 20 phản hồi</div>
-              <div style="opacity:.5">❌ Giữ logo Nhà Có Tiệc</div>
+              <div style="opacity:.5">❌ Giữ logo Nhà Có Thiệp</div>
             </div>
             <div onClick="{{ goTemplates }}" style="margin-top:26px;padding:14px;border:1px solid #4B5563;border-radius:999px;text-align:center;cursor:pointer;font-size:15px" style-hover="border-color:#D4AF37;color:#D4AF37">Bắt đầu miễn phí</div>
           </div>
@@ -367,7 +329,7 @@ input,textarea,button,select{font-family:inherit}
               <div>✅ RSVP không giới hạn + xuất Excel</div>
               <div>✅ Xoá logo + tên miền riêng</div>
             </div>
-            <div onClick="{{ goCheckout }}" style="margin-top:26px;padding:14px;border-radius:999px;text-align:center;cursor:pointer;font-size:15px;font-weight:600;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff" style-hover="box-shadow:0 12px 28px rgba(212,175,55,.45)">Nâng cấp PRO — VNPay / MoMo</div>
+            <div style="margin-top:26px;padding:14px;border-radius:999px;text-align:center;cursor:pointer;font-size:15px;font-weight:600;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff" style-hover="box-shadow:0 12px 28px rgba(212,175,55,.45)">Nâng cấp PRO — VNPay / MoMo</div>
             <div style="margin-top:12px;text-align:center;font-size:12px;opacity:.6">Kích hoạt tự động trong 2-5 giây</div>
           </div>
         </div>
@@ -409,7 +371,7 @@ input,textarea,button,select{font-family:inherit}
 
     <section id="faq" style="background:#FFFDF9;border-top:1px solid #EFE7DA">
       <div style="max-width:860px;margin:0 auto;padding:clamp(48px,6vw,84px) 20px">
-        <h2 style="font-family: Times New Roman; font-size: 20px; color: #1E2229; margin: 0 0 32px; text-align: center; font-weight: 700">{{ faqTitle }}</h2>
+        <h2 style="font-family: Times New Roman; font-size: 20px; color: #1E2229; margin: 0 0 32px; text-align: center; font-weight: 700">Câu hỏi thường gặp</h2>
         <div style="display:flex;flex-direction:column;gap:12px">
           <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
             <div style="background:#fff;border:1px solid #EFE7DA;border-radius:14px;overflow:hidden">
@@ -428,10 +390,10 @@ input,textarea,button,select{font-family:inherit}
 
     <section style="background:linear-gradient(135deg,#FAF3E4,#F6E9E9)">
       <div style="max-width:900px;margin:0 auto;padding:clamp(52px,7vw,96px) 20px;text-align:center">
-        <div style="font-family:'Dancing Script',cursive;font-size:clamp(30px,4vw,44px);color:#9A741A;margin-bottom:14px">{{ ctaScript }}</div>
-        <h2 style="font-family: Times New Roman; font-size: clamp(26px,3.2vw,40px); color: #1E2229; margin: 0 0 26px; text-wrap: balance">{{ ctaTitle }}</h2>
+        <div style="font-family:'Dancing Script',cursive;font-size:clamp(30px,4vw,44px);color:#9A741A;margin-bottom:14px">Ngày trọng đại xứng đáng một tấm thiệp riêng</div>
+        <h2 style="font-family: Times New Roman; font-size: clamp(26px,3.2vw,40px); color: #1E2229; margin: 0 0 26px; text-wrap: balance">Sẵn sàng tạo tấm thiệp cưới đặc biệt nhất cho ngày trọng đại của bạn?</h2>
         <div onClick="{{ goTemplates }}" style="display:inline-block;padding:17px 38px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 16px 34px rgba(212,175,55,.4)">Tạo thiệp miễn phí ngay →</div>
-        <div style="margin-top:16px;font-size:13.5px;color:#4B5563">{{ ctaNote }}</div>
+        <div style="margin-top:16px;font-size:13.5px;color:#4B5563">Không cần thẻ tín dụng · Xong trong 15 phút</div>
       </div>
     </section>
   </main>
@@ -505,7 +467,7 @@ input,textarea,button,select{font-family:inherit}
       <sc-for list="{{ results }}" as="t" hint-placeholder-count="9">
         <div style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 22px 44px -22px rgba(30,34,41,.3)">
           <div style="position:relative;aspect-ratio:3/4;background:#F7F2E8">
-            <image-slot id="{{ t.slot }}" shape="rect" fit="contain" placeholder="Ảnh mẫu thiệp" src="{{ t.slotSrc }}"></image-slot>
+            <image-slot id="{{ t.slot }}" shape="rect" placeholder="Ảnh mẫu thiệp"></image-slot>
             <div style="position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;color:#fff;background:{{ t.badgeBg }}">{{ t.badge }}</div>
             <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:8px">
               <div onClick="{{ goCard }}" style="flex:1;padding:10px;border-radius:999px;background:rgba(30,34,41,.82);color:#fff;font-size:12.5px;text-align:center;cursor:pointer;backdrop-filter:blur(6px)" style-hover="background:#1E2229">Xem trước</div>
@@ -760,7 +722,7 @@ input,textarea,button,select{font-family:inherit}
 
   <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
   <main style="background:#FAF8F5;border-top:1px solid #EFE7DA">
-    <div style="max-width:1240px;margin:0 auto;padding:clamp(22px,3vw,36px) 20px 110px">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(22px,3vw,36px) 20px 70px">
       <div style="font-size:13px;color:#9CA3AF;margin-bottom:14px"><span onClick="{{ goHome }}" style="cursor:pointer">Trang chủ</span> / Quản lý thiệp</div>
 
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px">
@@ -934,9 +896,6 @@ input,textarea,button,select{font-family:inherit}
           <div>
             <div style="{{ eLbl }}">Số điện thoại</div>
             <input value="{{ auPhone }}" onChange="{{ setAuPhone }}" placeholder="09xx xxx xxx" style="{{ eInput }}">
-            <sc-if value="{{ auIsLogin }}" hint-placeholder-val="{{ true }}">
-              <div style="font-size:11.5px;color:#B8A15A;margin-top:6px">Mẹo: nhập số bắt đầu bằng "admin" để vào trang quản trị (demo)</div>
-            </sc-if>
           </div>
           <div>
             <div style="{{ eLbl }}">Mật khẩu</div>
@@ -954,7 +913,7 @@ input,textarea,button,select{font-family:inherit}
           <sc-if value="{{ auIsSignup }}" hint-placeholder-val="{{ false }}">
             <div onClick="{{ toggleTerms }}" style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:13px;line-height:1.6">
               <div style="{{ auBoxT }}">{{ auCheckT }}</div>
-              <span>Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của Nhà Có Tiệc.</span>
+              <span>Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của Nhà Có Thiệp.</span>
             </div>
           </sc-if>
           <div onClick="{{ auSubmit }}" style="{{ auBtn }}">{{ auCta }}</div>
@@ -982,7 +941,7 @@ input,textarea,button,select{font-family:inherit}
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:22px">
         <sc-for list="{{ blogPosts }}" as="p" hint-placeholder-count="6">
           <div style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 42px -24px rgba(30,34,41,.3)">
-            <div style="aspect-ratio:16/10"><image-slot id="{{ p.slot }}" shape="rect" fit="contain" placeholder="Ảnh bài viết" src="{{ p.coverSrc }}"></image-slot></div>
+            <div style="aspect-ratio:16/10"><image-slot id="{{ p.slot }}" shape="rect" placeholder="Ảnh bài viết"></image-slot></div>
             <div style="padding:20px">
               <div style="font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: #9A741A; margin-bottom: 9px; font-weight: 700">{{ p.cat }}</div>
               <div style="font-family: Times New Roman; font-size: 15px; color: #1E2229; line-height: 1.35; margin-bottom: 10px">{{ p.title }}</div>
@@ -1017,392 +976,6 @@ input,textarea,button,select{font-family:inherit}
   </div>
   </sc-if>
 
-  <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
-  <main style="background:#FAF8F5;border-top:1px solid #EFE7DA">
-    <div style="max-width:960px;margin:0 auto;padding:clamp(24px,4vw,48px) 20px 80px">
-      <div style="font-size:13px;color:#9CA3AF;margin-bottom:14px"><span onClick="{{ goPricing }}" style="cursor:pointer">Bảng giá</span> / Thanh toán</div>
-      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,34px);color:#1E2229;margin:0 0 26px">Nâng cấp gói PRO</h1>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;align-items:start">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:24px">
-          <div style="font-family:'Playfair Display',serif;font-size:17px;color:#1E2229;margin-bottom:16px">Chọn phương thức</div>
-          <div style="display:flex;gap:8px;margin-bottom:20px">
-            <sc-for list="{{ payMethods }}" as="m" hint-placeholder-count="3"><div onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</div></sc-for>
-          </div>
-
-          <sc-if value="{{ payShowQr }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px 0">
-              <div style="width:190px;height:190px;border-radius:16px;border:1px solid #E4DCC9;background:#fff;padding:10px">
-                <image-slot id="checkout-qr" shape="rounded" radius="8" placeholder="Mã QR thanh toán"></image-slot>
-              </div>
-              <div style="font-size:13.5px;color:#4B5563">Mở app {{ payMethodName }}, quét mã để thanh toán</div>
-              <div style="font-size:13px;color:#9A741A;font-weight:600">Mã hết hạn sau {{ payCountdown }}</div>
-            </div>
-          </sc-if>
-          <sc-if value="{{ payShowCard }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;gap:12px;padding:6px 0">
-              <input placeholder="Số thẻ (demo, không cần nhập thật)" style="{{ eInput }}">
-              <div style="display:flex;gap:12px">
-                <input placeholder="MM/YY" style="{{ eInput }}">
-                <input placeholder="CVC" style="{{ eInput }}">
-              </div>
-            </div>
-          </sc-if>
-
-          <div onClick="{{ payConfirm }}" style="margin-top:20px;padding:15px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;text-align:center;font-weight:600;cursor:pointer;box-shadow:0 10px 24px rgba(212,175,55,.32)">{{ payCtaLabel }}</div>
-
-          <sc-if value="{{ paySuccess }}" hint-placeholder-val="{{ false }}">
-            <div style="margin-top:18px;padding:18px;border-radius:14px;background:#ECFDF5;border:1px solid #A7F3D0;text-align:center">
-              <div style="font-size:28px;margin-bottom:8px">🎉</div>
-              <div style="font-family:'Playfair Display',serif;font-size:17px;color:#1E2229;margin-bottom:6px">Thanh toán thành công!</div>
-              <div style="font-size:13.5px;color:#065F46;margin-bottom:14px">Gói PRO đã được kích hoạt cho thiệp của bạn.</div>
-              <div onClick="{{ goEditor }}" style="display:inline-block;padding:11px 22px;border-radius:999px;background:#1E2229;color:#F7F2E8;font-size:13.5px;cursor:pointer">Về Studio tạo thiệp</div>
-            </div>
-          </sc-if>
-        </div>
-
-        <div style="background:#1E2229;border-radius:20px;padding:24px;color:#F7F2E8">
-          <div style="font-family:'Playfair Display',serif;font-size:17px;margin-bottom:16px">Đơn hàng</div>
-          <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px"><span style="opacity:.8">Gói PRO — trọn đám cưới</span><span>570.000đ</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:14px;color:#10B981"><span>Ưu đãi CUOI2026 (-30%)</span><span>-171.000đ</span></div>
-          <div style="height:1px;background:#2E3440;margin-bottom:14px"></div>
-          <div style="display:flex;justify-content:space-between;font-size:18px;font-weight:600"><span>Tổng cộng</span><span style="color:#D4AF37">399.000đ</span></div>
-          <div style="margin-top:20px;font-size:12.5px;opacity:.7;line-height:1.7">Thanh toán một lần, dùng cho toàn bộ đám cưới. Kích hoạt tự động 2-5 giây sau khi xác nhận.</div>
-        </div>
-      </div>
-    </div>
-  </main>
-  </sc-if>
-
-  <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
-  <main style="background:#FAF8F5;border-top:1px solid #EFE7DA">
-    <div style="max-width:1240px;margin:0 auto;padding:clamp(22px,3vw,36px) 20px 110px">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px">
-        <div>
-          <div style="font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #9A741A; margin-bottom: 6px; font-weight: 700">Tài khoản quản trị</div>
-          <h1 style="font-family: Times New Roman; font-size: 20px; color: #1E2229; margin: 0 0 6px">Quản trị hệ thống</h1>
-          <div style="font-size:14.5px">Toàn cảnh nền tảng Nhà Có Tiệc · Cập nhật vừa xong</div>
-        </div>
-        <div onClick="{{ logoutAdmin }}" style="padding:10px 18px;border:1px solid #DCD2C0;border-radius:999px;font-size:13.5px;cursor:pointer;background:#fff" style-hover="border-color:#D4AF37;color:#9A741A">← Đăng xuất</div>
-      </div>
-
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
-        <sc-for list="{{ pTabs }}" as="t" hint-placeholder-count="6"><div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div></sc-for>
-      </div>
-
-      <sc-if value="{{ pIsOverview }}" hint-placeholder-val="{{ true }}">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:16px;margin-bottom:22px">
-          <sc-for list="{{ pStats }}" as="s" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #EFE7DA;border-radius:18px;padding:20px">
-              <div style="font-size:12.5px;color:#9CA3AF;margin-bottom:8px">{{ s.label }}</div>
-              <div style="font-family: Times New Roman; font-size: 20px; color: #1E2229">{{ s.value }}</div>
-              <div style="font-size:12.5px;color:{{ s.deltaColor }};margin-top:6px">{{ s.delta }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:22px;align-items:start">
-          <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:24px;flex:2 1 420px">
-            <div style="font-family: Times New Roman; font-size: 18px; color: #1E2229; margin-bottom: 20px">Doanh thu 6 tháng gần nhất</div>
-            <div style="display:flex;align-items:flex-end;gap:14px;height:170px;padding:0 4px">
-              <sc-for list="{{ pRevenue }}" as="r" hint-placeholder-count="6">
-                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end">
-                  <div style="font-size:11.5px;color:#9A741A;font-weight:600">{{ r.label }}</div>
-                  <div style="width:100%;max-width:38px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#D4AF37,#B98E22);height:{{ r.height }}"></div>
-                  <div style="font-size:11px;color:#9CA3AF">{{ r.m }}</div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-          <div style="background:#1E2229;border-radius:20px;padding:22px;color:#F7F2E8;flex:1 1 260px">
-            <div style="font-family: Times New Roman; font-size: 18px; margin-bottom: 16px">Mẫu được dùng nhiều nhất</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <sc-for list="{{ pTopTemplates }}" as="t" hint-placeholder-count="5">
-                <div style="display:flex;justify-content:space-between;font-size:13.5px">
-                  <span style="opacity:.85">{{ t.name }}</span>
-                  <strong style="color:#D4AF37">{{ t.uses }}</strong>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsUsers }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;overflow:hidden">
-          <div style="overflow-x:auto">
-            <div style="min-width:720px">
-              <div style="display:grid;grid-template-columns:1.4fr 1fr .8fr .7fr 1fr .9fr;gap:14px;padding:13px 22px;background:#FAF8F5;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9CA3AF">
-                <div>Khách hàng</div><div>Điện thoại</div><div>Gói</div><div>Số thiệp</div><div>Tham gia</div><div>Trạng thái</div>
-              </div>
-              <sc-for list="{{ pUsers }}" as="u" hint-placeholder-count="8">
-                <div style="display:grid;grid-template-columns:1.4fr 1fr .8fr .7fr 1fr .9fr;gap:14px;padding:15px 22px;border-top:1px solid #F3EEE4;font-size:13.5px;align-items:center">
-                  <div style="color:#1E2229;font-weight:500">{{ u.name }}</div>
-                  <div style="color:#4B5563">{{ u.phone }}</div>
-                  <div><span style="{{ u.planBadge }}">{{ u.plan }}</span></div>
-                  <div style="color:#1E2229">{{ u.cards }}</div>
-                  <div style="color:#9CA3AF;font-size:12.5px">{{ u.joined }}</div>
-                  <div><span style="{{ u.statusBadge }}">{{ u.status }}</span></div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsCards }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;overflow:hidden">
-          <div style="overflow-x:auto">
-            <div style="min-width:760px">
-              <div style="display:grid;grid-template-columns:1.3fr 1.2fr .8fr .8fr .8fr .9fr;gap:14px;padding:13px 22px;background:#FAF8F5;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9CA3AF">
-                <div>Cặp đôi</div><div>Đường dẫn</div><div>Lượt xem</div><div>RSVP</div><div>Gói</div><div>Trạng thái</div>
-              </div>
-              <sc-for list="{{ pCards }}" as="c" hint-placeholder-count="6">
-                <div style="display:grid;grid-template-columns:1.3fr 1.2fr .8fr .8fr .8fr .9fr;gap:14px;padding:15px 22px;border-top:1px solid #F3EEE4;font-size:13.5px;align-items:center">
-                  <div style="color:#1E2229;font-weight:500">{{ c.couple }}</div>
-                  <div style="color:#9CA3AF;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.slug }}</div>
-                  <div style="color:#1E2229">{{ c.views }}</div>
-                  <div style="color:#1E2229">{{ c.rsvp }}</div>
-                  <div><span style="{{ c.planBadge }}">{{ c.plan }}</span></div>
-                  <div><span style="{{ c.statusBadge }}">{{ c.status }}</span></div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsTemplates }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:22px;margin-bottom:20px">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
-            <div style="font-family: Times New Roman; font-size: 18px; color: #1E2229; font-weight: 700">Thêm mẫu thiệp từ Canva</div>
-            <div onClick="{{ ntToggleForm }}" style="padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;font-size:13.5px;font-weight:600;cursor:pointer">{{ ntToggleLabel }}</div>
-          </div>
-          <sc-if value="{{ ntFormOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px;padding-top:18px;margin-top:18px;border-top:1px solid #EFE7DA">
-              <div>
-                <div style="{{ eLbl }}">Ảnh bìa (xuất từ Canva, kéo vào đây)</div>
-                <div style="aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px dashed #DCD2C0"><image-slot id="{{ ntDraftSlot }}" shape="rect" fit="contain" placeholder="Kéo ảnh Canva vào đây" src="{{ ntCoverUrl }}"></image-slot></div>
-                <div style="margin-top:10px">
-                  <div style="{{ eLbl }}">Hoặc dán link ảnh (URL)</div>
-                  <input value="{{ ntCoverUrl }}" onChange="{{ setNtCoverUrl }}" placeholder="https://..." style="{{ eInput }}">
-                </div>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:14px">
-                <div>
-                  <div style="{{ eLbl }}">Tên mẫu</div>
-                  <input value="{{ ntName }}" onChange="{{ setNtName }}" placeholder="VD: Vintage Canva" style="{{ eInput }}">
-                </div>
-                <div>
-                  <div style="{{ eLbl }}">Dịp</div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-                    <sc-for list="{{ ntOccChips }}" as="c" hint-placeholder-count="5"><div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div></sc-for>
-                    <sc-if value="{{ occNotAdding }}" hint-placeholder-val="{{ true }}">
-                      <div onClick="{{ startAddOcc }}" style="padding:8px 14px;border-radius:999px;border:1px dashed #DCD2C0;color:#9A741A;font-size:13px;cursor:pointer">+ Thêm</div>
-                    </sc-if>
-                    <sc-if value="{{ occAdding }}" hint-placeholder-val="{{ false }}">
-                      <input value="{{ newOccLabel }}" onChange="{{ setNewOccLabel }}" placeholder="Tên mới..." style="padding:8px 12px;border:1px solid #E4DCC9;border-radius:999px;font-size:13px;outline:none;background:#FAF8F5;color:#1E2229;width:130px">
-                      <div onClick="{{ confirmAddOcc }}" style="padding:8px 14px;border-radius:999px;background:#1E2229;color:#fff;font-size:12.5px;cursor:pointer">✓ Lưu</div>
-                      <div onClick="{{ cancelAddOcc }}" style="padding:8px 10px;color:#9CA3AF;font-size:12.5px;cursor:pointer">Hủy</div>
-                    </sc-if>
-                  </div>
-                </div>
-                <div>
-                  <div style="{{ eLbl }}">Phong cách</div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-                    <sc-for list="{{ ntStyChips }}" as="c" hint-placeholder-count="5"><div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div></sc-for>
-                    <sc-if value="{{ styNotAdding }}" hint-placeholder-val="{{ true }}">
-                      <div onClick="{{ startAddSty }}" style="padding:8px 14px;border-radius:999px;border:1px dashed #DCD2C0;color:#9A741A;font-size:13px;cursor:pointer">+ Thêm</div>
-                    </sc-if>
-                    <sc-if value="{{ styAdding }}" hint-placeholder-val="{{ false }}">
-                      <input value="{{ newStyLabel }}" onChange="{{ setNewStyLabel }}" placeholder="Tên mới..." style="padding:8px 12px;border:1px solid #E4DCC9;border-radius:999px;font-size:13px;outline:none;background:#FAF8F5;color:#1E2229;width:130px">
-                      <div onClick="{{ confirmAddSty }}" style="padding:8px 14px;border-radius:999px;background:#1E2229;color:#fff;font-size:12.5px;cursor:pointer">✓ Lưu</div>
-                      <div onClick="{{ cancelAddSty }}" style="padding:8px 10px;color:#9CA3AF;font-size:12.5px;cursor:pointer">Hủy</div>
-                    </sc-if>
-                  </div>
-                </div>
-                <div>
-                  <div style="{{ eLbl }}">Bảng màu</div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-                    <sc-for list="{{ ntColChips }}" as="c" hint-placeholder-count="6"><div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div></sc-for>
-                    <sc-if value="{{ colNotAdding }}" hint-placeholder-val="{{ true }}">
-                      <div onClick="{{ startAddCol }}" style="padding:8px 14px;border-radius:999px;border:1px dashed #DCD2C0;color:#9A741A;font-size:13px;cursor:pointer">+ Thêm</div>
-                    </sc-if>
-                    <sc-if value="{{ colAdding }}" hint-placeholder-val="{{ false }}">
-                      <input value="{{ newColLabel }}" onChange="{{ setNewColLabel }}" placeholder="Tên mới..." style="padding:8px 12px;border:1px solid #E4DCC9;border-radius:999px;font-size:13px;outline:none;background:#FAF8F5;color:#1E2229;width:130px">
-                      <div onClick="{{ confirmAddCol }}" style="padding:8px 14px;border-radius:999px;background:#1E2229;color:#fff;font-size:12.5px;cursor:pointer">✓ Lưu</div>
-                      <div onClick="{{ cancelAddCol }}" style="padding:8px 10px;color:#9CA3AF;font-size:12.5px;cursor:pointer">Hủy</div>
-                    </sc-if>
-                  </div>
-                </div>
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;background:#FAF8F5;border:1px solid #EFE7DA;border-radius:12px">
-                  <div style="font-size:13.5px;color:#1E2229">Mẫu trả phí (PRO)</div>
-                  <div onClick="{{ ntTogglePro }}" style="{{ ntProSw }}"><div style="{{ ntProKnob }}"></div></div>
-                </div>
-                <div onClick="{{ ntSubmit }}" style="padding:14px;border-radius:999px;background:#1E2229;color:#F7F2E8;text-align:center;font-weight:600;cursor:pointer">Đăng mẫu lên Kho Mẫu Thiệp</div>
-                <sc-if value="{{ ntAdded }}" hint-placeholder-val="{{ false }}">
-                  <div style="padding:12px;border-radius:12px;background:#ECFDF5;border:1px solid #A7F3D0;font-size:13px;color:#065F46;text-align:center">✓ Đã thêm mẫu — khách đã có thể thấy trong Kho Mẫu Thiệp.</div>
-                </sc-if>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:18px">
-          <sc-for list="{{ pTemplates }}" as="t" hint-placeholder-count="8">
-            <div style="background:#fff;border:1px solid #EFE7DA;border-radius:16px;padding:16px">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px">
-                <div style="font-family: Be Vietnam Pro; font-size: 15.5px; color: #1E2229; line-height: 1.3">{{ t.name }}</div>
-                <span style="{{ t.badge }}">{{ t.badgeLabel }}</span>
-              </div>
-              <div style="font-size:12.5px;color:#9CA3AF;margin-bottom:14px">{{ t.uses }} lượt dùng · ⭐ {{ t.rating }}</div>
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-                <div style="font-size:13px;color:#4B5563">Nổi bật</div>
-                <div onClick="{{ t.onToggleFeatured }}" style="{{ t.featSw }}"><div style="{{ t.featKnob }}"></div></div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px">
-                <div style="font-size:13px;color:#4B5563">Hoạt động</div>
-                <div onClick="{{ t.onToggleActive }}" style="{{ t.actSw }}"><div style="{{ t.actKnob }}"></div></div>
-              </div>
-            </div>
-          </sc-for>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsPosts }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:22px;margin-bottom:20px">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
-            <div style="font-family: Times New Roman; font-size: 18px; color: #1E2229; font-weight: 700">Bài viết Cẩm nang cưới</div>
-            <div onClick="{{ npToggleForm }}" style="padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;font-size:13.5px;font-weight:600;cursor:pointer">{{ npToggleLabel }}</div>
-          </div>
-          <sc-if value="{{ npFormOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;gap:14px;padding-top:18px;margin-top:18px;border-top:1px solid #EFE7DA">
-              <div>
-                <div style="{{ eLbl }}">Tiêu đề bài viết</div>
-                <input value="{{ npTitle }}" onChange="{{ setNpTitle }}" placeholder="VD: 5 mẹo chọn hoa cưới theo mùa" style="{{ eInput }}">
-              </div>
-              <div>
-                <div style="{{ eLbl }}">Tóm tắt</div>
-                <textarea value="{{ npExcerpt }}" onChange="{{ setNpExcerpt }}" rows="3" style="{{ eArea }}"></textarea>
-              </div>
-              <div>
-                <div style="{{ eLbl }}">Chủ đề</div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ npCatChips }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div></sc-for></div>
-              </div>
-              <div>
-                <div style="{{ eLbl }}">Ảnh bìa (URL)</div>
-                <input value="{{ npCoverUrl }}" onChange="{{ setNpCoverUrl }}" placeholder="https://..." style="{{ eInput }}">
-              </div>
-              <div onClick="{{ npSubmit }}" style="padding:14px;border-radius:999px;background:#1E2229;color:#F7F2E8;text-align:center;font-weight:600;cursor:pointer">{{ npSubmitLabel }}</div>
-            </div>
-          </sc-if>
-        </div>
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;overflow:hidden">
-          <sc-for list="{{ npPosts }}" as="p" hint-placeholder-count="6">
-            <div style="display:flex;align-items:center;gap:14px;padding:15px 22px;border-top:1px solid #F3EEE4;flex-wrap:wrap">
-              <div style="flex:1;min-width:200px">
-                <div style="color:#1E2229;font-weight:500;font-size:14px">{{ p.title }}</div>
-                <div style="font-size:12.5px;color:#9CA3AF;margin-top:3px">{{ p.catLabel }} · {{ p.meta }}</div>
-              </div>
-              <div onClick="{{ p.onEdit }}" style="padding:8px 14px;border:1px solid #DCD2C0;border-radius:999px;font-size:12.5px;cursor:pointer;color:#2D3142" style-hover="border-color:#D4AF37;color:#9A741A">Sửa</div>
-              <div onClick="{{ p.onDelete }}" style="padding:8px 14px;border-radius:999px;font-size:12.5px;cursor:pointer;color:#B91C1C" style-hover="background:#FEF2F2">Xóa</div>
-            </div>
-          </sc-for>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsOrders }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;overflow:hidden">
-          <div style="overflow-x:auto">
-            <div style="min-width:760px">
-              <div style="display:grid;grid-template-columns:.9fr 1.3fr .9fr .9fr 1fr .9fr;gap:14px;padding:13px 22px;background:#FAF8F5;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9CA3AF">
-                <div>Mã đơn</div><div>Khách hàng</div><div>Số tiền</div><div>Phương thức</div><div>Ngày</div><div>Trạng thái</div>
-              </div>
-              <sc-for list="{{ pOrders }}" as="o" hint-placeholder-count="8">
-                <div style="display:grid;grid-template-columns:.9fr 1.3fr .9fr .9fr 1fr .9fr;gap:14px;padding:15px 22px;border-top:1px solid #F3EEE4;font-size:13.5px;align-items:center">
-                  <div style="color:#1E2229;font-weight:500">{{ o.id }}</div>
-                  <div style="color:#2D3142">{{ o.name }}</div>
-                  <div style="color:#9A741A;font-weight:600">{{ o.amount }}</div>
-                  <div style="color:#4B5563">{{ o.method }}</div>
-                  <div style="color:#9CA3AF;font-size:12.5px">{{ o.date }}</div>
-                  <div><span style="{{ o.statusBadge }}">{{ o.status }}</span></div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ pIsSettings }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:26px;max-width:560px;display:flex;flex-direction:column;gap:16px;margin-bottom:20px">
-          <div style="font-family: Times New Roman; font-size: 17px; color: #1E2229; font-weight: 700">Nội dung trang chủ - Hero &amp; Footer</div>
-          <div>
-            <div style="{{ eLbl }}">Dòng badge trên hero</div>
-            <input value="{{ siteBadge }}" onChange="{{ setSiteBadge }}" style="{{ eInput }}">
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Tiêu đề chính</div>
-            <input value="{{ heroTitleMain }}" onChange="{{ setHeroTitleMain }}" style="{{ eInput }}">
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Tiêu đề nhấn (in nghiêng, màu vàng)</div>
-            <input value="{{ heroTitleEmphasis }}" onChange="{{ setHeroTitleEmphasis }}" style="{{ eInput }}">
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Đoạn giới thiệu dưới tiêu đề</div>
-            <textarea value="{{ heroSubtitle }}" onChange="{{ setHeroSubtitle }}" rows="3" style="{{ eArea }}"></textarea>
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Tagline ở footer</div>
-            <textarea value="{{ footerTagline }}" onChange="{{ setFooterTagline }}" rows="2" style="{{ eArea }}"></textarea>
-          </div>
-        </div>
-
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:26px;max-width:560px;display:flex;flex-direction:column;gap:22px;margin-bottom:20px">
-          <div style="font-family: Times New Roman; font-size: 17px; color: #1E2229; font-weight: 700">Nội dung các mục còn lại trên trang chủ</div>
-          <sc-for list="{{ pSections }}" as="sec" hint-placeholder-count="8">
-            <div style="display:flex;flex-direction:column;gap:12px;padding-top:16px;border-top:1px solid #F3EEE4">
-              <div style="font-size:13px;font-weight:600;color:#9A741A">{{ sec.title }}</div>
-              <sc-for list="{{ sec.fields }}" as="f" hint-placeholder-count="2">
-                <div>
-                  <div style="{{ f.style }}">{{ f.label }}</div>
-                  <sc-if value="{{ f.area }}" hint-placeholder-val="{{ false }}">
-                    <textarea value="{{ f.value }}" onChange="{{ f.onChange }}" rows="2" style="{{ f.inputStyle }}"></textarea>
-                  </sc-if>
-                  <sc-if value="{{ f.notArea }}" hint-placeholder-val="{{ true }}">
-                    <input value="{{ f.value }}" onChange="{{ f.onChange }}" style="{{ f.inputStyle }}">
-                  </sc-if>
-                </div>
-              </sc-for>
-            </div>
-          </sc-for>
-        </div>
-        <div style="background:#fff;border:1px solid #EFE7DA;border-radius:20px;padding:26px;max-width:520px;display:flex;flex-direction:column;gap:16px">
-          <div>
-            <div style="{{ eLbl }}">Tên website</div>
-            <input value="{{ pSiteName }}" onChange="{{ setPSiteName }}" style="{{ eInput }}">
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Hotline hỗ trợ</div>
-            <input value="{{ pHotline }}" onChange="{{ setPHotline }}" style="{{ eInput }}">
-          </div>
-          <div>
-            <div style="{{ eLbl }}">Email hỗ trợ</div>
-            <input value="{{ pEmail }}" onChange="{{ setPEmail }}" style="{{ eInput }}">
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px;background:#FAF8F5;border:1px solid #EFE7DA;border-radius:14px">
-            <div style="font-size:14px;color:#1E2229">Cho phép đăng ký mới</div>
-            <div onClick="{{ pToggleSignup }}" style="{{ pSignupSw }}"><div style="{{ pSignupKnob }}"></div></div>
-          </div>
-          <div onClick="{{ pSave }}" style="padding:14px;border-radius:999px;background:linear-gradient(135deg,#D4AF37,#B98E22);color:#fff;text-align:center;font-weight:600;cursor:pointer">Lưu thay đổi</div>
-          <sc-if value="{{ pSaved }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:13px;border-radius:12px;background:#ECFDF5;border:1px solid #A7F3D0;font-size:13.5px;color:#065F46;text-align:center">✓ Đã lưu cài đặt hệ thống.</div>
-          </sc-if>
-        </div>
-      </sc-if>
-    </div>
-  </main>
-  </sc-if>
-
   <footer style="background:#151922;color:#B9B4A8">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,68px) 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:36px">
       <div>
@@ -1410,7 +983,7 @@ input,textarea,button,select{font-family:inherit}
           <div style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#D4AF37,#9A741A);display:grid;place-items:center;color:#fff;font-family:'Playfair Display',serif;font-size:19px;font-weight:700">N</div>
           <div style="font-family:'Playfair Display',serif;font-size:18px;color:#F7F2E8">Nhà Có Tiệc</div>
         </div>
-        <div style="font-size: 14px; line-height: 1.75; max-width: 280px; font-weight: 700">{{ footerTagline }}</div>
+        <div style="font-size: 14px; line-height: 1.75; max-width: 280px; font-weight: 700">Nền tảng thiệp số tương tác tinh tế, lưu giữ trọn vẹn khoảnh khắc của bạn.</div>
       </div>
       <div>
         <div style="font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: #D4AF37; margin-bottom: 16px; font-weight: 700">Mẫu thiệp &amp; dịp</div>
@@ -1437,9 +1010,9 @@ input,textarea,button,select{font-family:inherit}
       <div style="font-weight: 700">
         <div style="font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: #D4AF37; margin-bottom: 16px; font-weight: 700">Kết nối &amp; thanh toán</div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;margin-bottom:20px">
-          <div style="font-weight: 400">{{ footerHotline }}</div>
+          <div style="font-weight: 400">Hotline: 09xx.xxx.xxx</div>
           <div style="font-weight: 400">Zalo OA hỗ trợ 24/7</div>
-          <div>cskh@nhacotiec.vn</div>
+          <div>cskh@nhacothiep.vn</div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
           <div style="padding:7px 13px;border:1px solid #2E3440;border-radius:8px;font-size:12.5px">Facebook</div>
@@ -1455,7 +1028,7 @@ input,textarea,button,select{font-family:inherit}
         </div>
       </div>
     </div>
-    <div style="border-top: 1px solid #22272F; padding: 18px 20px; text-align: center; font-size: 12.5px; color: #767166; font-weight: 700">© 2026 Nhà Có Tiệc. Tất cả quyền được bảo lưu. Giấy phép ĐKKD số: xxxxxxxxx.</div>
+    <div style="border-top: 1px solid #22272F; padding: 18px 20px; text-align: center; font-size: 12.5px; color: #767166; font-weight: 700">© 2026 Nhà Có Thiệp. Tất cả quyền được bảo lưu. Giấy phép ĐKKD số: xxxxxxxxx.</div>
   </footer>
 </div>
 </sc-if>
@@ -1634,7 +1207,7 @@ input,textarea,button,select{font-family:inherit}
           <div style="font-family:'Dancing Script',cursive;font-size:40px;color:#9A741A;margin-bottom:12px">Thank You</div>
           <div style="font-size:14px;line-height:1.8;max-width:300px;margin:0 auto 20px">Cảm ơn bạn đã dành thời gian đọc tấm thiệp này. Hẹn gặp bạn trong ngày vui của chúng mình!</div>
           <div style="font-size:22px;letter-spacing:.3em">🎉 🥂 🎊</div>
-          <div style="margin-top:28px;font-size:11.5px;color:#A8925F">Thiệp được tạo bởi Nhà Có Tiệc</div>
+          <div style="margin-top:28px;font-size:11.5px;color:#A8925F">Thiệp được tạo bởi Nhà Có Thiệp</div>
         </div>
       </div>
 
@@ -1697,11 +1270,9 @@ const T = [
   {id:9,name:'Mừng Thọ Cúc Vàng',occ:'mungtho',sty:'hysu',col:'gold',exp:'scroll',pro:true,price:259000,uses:'1.8k',rating:4.9,new:false},
   {id:10,name:'Ivory Typographic',occ:'cuoi',sty:'minimal',col:'cream',exp:'scroll',pro:false,price:0,uses:'8.6k',rating:4.6,new:false},
   {id:11,name:'Đỏ Rượu Cổ Điển',occ:'cuoi',sty:'vintage',col:'red',exp:'flipbook',pro:true,price:379000,uses:'5.9k',rating:4.8,new:false},
-  {id:12,name:'Sage Botanical Story',occ:'cuoi',sty:'vintage',col:'sage',exp:'story',pro:true,price:329000,uses:'6.8k',rating:4.9,new:true},
-  {id:13,name:'VINTAGE',occ:'cuoi',sty:'vintage',col:'sage',exp:'scroll',pro:true,price:359000,uses:'0',rating:5.0,new:true,cover:'uploads/images-1788058091810-1j55.png'}
+  {id:12,name:'Sage Botanical Story',occ:'cuoi',sty:'vintage',col:'sage',exp:'story',pro:true,price:329000,uses:'6.8k',rating:4.9,new:true}
 ];
 const OCC = {all:'Tất cả',cuoi:'Thiệp cưới',sinhnhat:'Sinh nhật',thoinoi:'Thôi nôi',khaitruong:'Khai trương',mungtho:'Mừng thọ'};
-const OCC_NOALL = {cuoi:'Thiệp cưới',sinhnhat:'Sinh nhật',thoinoi:'Thôi nôi',khaitruong:'Khai trương',mungtho:'Mừng thọ'};
 const STY = {luxury:'Luxury Gold',vintage:'Vintage hoa lá',minimal:'Minimalist',hysu:'Hỷ Sự',korean:'Pastel Hàn Quốc'};
 const COL = {gold:'Gold',red:'Đỏ rượu',pink:'Hồng pastel',sage:'Xanh sage',cream:'Trắng kem',navy:'Xanh navy'};
 const EXP = {envelope:'Mở phong bì 3D',scroll:'Cuộn 1 trang',flipbook:'Lật trang sách',story:'Story 9:16'};
@@ -1715,47 +1286,6 @@ const FAQ_DATA = [
 ];
 
 const WEDDING = new Date('2027-08-25T17:00:00+07:00').getTime();
-
-const PLATFORM_USERS = [
-  {name:'Long & Phương', phone:'090x xxx 001', plan:'PRO', cards:1, joined:'02/2027', status:'active'},
-  {name:'Minh & Trang', phone:'090x xxx 002', plan:'PRO', cards:1, joined:'11/2026', status:'active'},
-  {name:'Hoàng & Vy', phone:'090x xxx 003', plan:'Miễn phí', cards:1, joined:'01/2027', status:'active'},
-  {name:'Khoa & Ngân', phone:'090x xxx 004', plan:'PRO', cards:2, joined:'03/2027', status:'active'},
-  {name:'Đức & An', phone:'090x xxx 005', plan:'Miễn phí', cards:1, joined:'04/2027', status:'inactive'},
-  {name:'Tú & Hằng', phone:'090x xxx 006', plan:'PRO', cards:1, joined:'05/2027', status:'active'},
-  {name:'Bảo & Chi', phone:'090x xxx 007', plan:'Miễn phí', cards:1, joined:'06/2027', status:'active'},
-  {name:'Nam & Thảo', phone:'090x xxx 008', plan:'PRO', cards:1, joined:'07/2027', status:'inactive'}
-];
-const PLATFORM_CARDS = [
-  {couple:'Long & Phương', slug:'nhacothiep.vn/long-phuong', views:2839, rsvp:412, plan:'PRO', status:'published'},
-  {couple:'Minh & Trang', slug:'nhacothiep.vn/minh-trang', views:1920, rsvp:280, plan:'PRO', status:'published'},
-  {couple:'Hoàng & Vy', slug:'nhacothiep.vn/hoang-vy', views:640, rsvp:95, plan:'Miễn phí', status:'published'},
-  {couple:'Khoa & Ngân', slug:'nhacothiep.vn/khoa-ngan', views:1140, rsvp:160, plan:'PRO', status:'draft'},
-  {couple:'Đức & An', slug:'nhacothiep.vn/duc-an', views:88, rsvp:12, plan:'Miễn phí', status:'draft'},
-  {couple:'Tú & Hằng', slug:'nhacothiep.vn/tu-hang', views:1505, rsvp:210, plan:'PRO', status:'published'}
-];
-const PLATFORM_ORDERS = [
-  {id:'#DH1042', name:'Khoa & Ngân', amount:'399.000đ', method:'MoMo', date:'27/08/2027', status:'success'},
-  {id:'#DH1041', name:'Tú & Hằng', amount:'399.000đ', method:'VNPay', date:'25/08/2027', status:'success'},
-  {id:'#DH1040', name:'Minh & Trang', amount:'399.000đ', method:'VietQR', date:'20/08/2027', status:'success'},
-  {id:'#DH1039', name:'Long & Phương', amount:'399.000đ', method:'VNPay', date:'12/06/2027', status:'success'},
-  {id:'#DH1038', name:'Nam & Thảo', amount:'399.000đ', method:'MoMo', date:'10/08/2027', status:'refunded'},
-  {id:'#DH1037', name:'Bảo & Chi', amount:'259.000đ', method:'VNPay', date:'02/08/2027', status:'pending'}
-];
-const BLOG_CATS = {checklist:'Checklist', loichuc:'Lời chúc', xuhuong:'Xu hướng 2027', thiepso:'Thiệp số'};
-const BLOG_POSTS_DEFAULT = [
-  {cat:'checklist', title:'Lộ trình 6 tháng chuẩn bị cưới cho cặp đôi đi làm', excerpt:'Chia nhỏ theo tuần, việc nào làm trước việc nào để sau — bám theo là không sót.', meta:'8 phút đọc · 12/07/2027'},
-  {cat:'loichuc', title:'100 lời chúc cưới cho bạn thân, đồng nghiệp và người lớn', excerpt:'Chọn sẵn theo mối quan hệ, copy là dùng được ngay trong thiệp hoặc phong bì.', meta:'6 phút đọc · 05/07/2027'},
-  {cat:'xuhuong', title:'Dresscode theo bảng màu: cách chọn cho khách mời', excerpt:'Bốn bảng màu đang được chọn nhiều nhất và cách viết dresscode để khách hiểu ngay.', meta:'5 phút đọc · 28/06/2027'},
-  {cat:'checklist', title:'Danh sách khách mời: chia bàn tiệc không lệch nhà nào', excerpt:'Cách nhóm khách theo bên và mức thân thiết, kèm mẹo xử lý khách đến muộn.', meta:'7 phút đọc · 20/06/2027'},
-  {cat:'thiepso', title:'Gửi thiệp qua Zalo sao cho người lớn cũng mở được', excerpt:'Kèm mẫu tin nhắn gửi cô dì chú bác và cách xử lý khi khách không thấy link.', meta:'4 phút đọc · 14/06/2027'},
-  {cat:'xuhuong', title:'Nhạc nền cho thiệp cưới: chọn bài nào cho vừa cảm xúc', excerpt:'Ba nhóm nhạc phổ biến và lý do bản piano thường an toàn nhất.', meta:'5 phút đọc · 02/06/2027'}
-].map((p,i)=>({...p, id:i, slot:'bg-'+i, cover:''}));
-const PLATFORM_REVENUE = [
-  {m:'Th3', v:42},{m:'Th4', v:58},{m:'Th5', v:51},{m:'Th6', v:73},{m:'Th7', v:88},{m:'Th8', v:96}
-];
-
-
 
 const STEPS = [
   {label:'Chọn mẫu', title:'Chọn mẫu thiệp của bạn', hint:'Mẫu nào cũng đổi được sau, mọi nội dung bạn nhập vẫn giữ nguyên.'},
@@ -1809,32 +1339,8 @@ class Component extends DCLogic {
     eBankG:'Techcombank · 1903 8899 66012', eBankB:'Vietcombank · 0071 0004 12345',
     eQrOn:true, eRsvpOn:true, eDeadline:'15/08/2027', eSlug:'long-phuong', ePublished:false,
     aTab:'all', fabVisible:false,
-    winWidth: typeof window !== 'undefined' ? window.innerWidth : 1280,
-    mobileNavOpen:false, mobileSearchOpen:false,
     auMode:'login', auPhone:'', auPass:'', auCouple:'', auRemember:true, auTerms:false, auDone:false,
-    blogCat:'all', nlEmail:'', nlSent:false,
-    posts: BLOG_POSTS_DEFAULT.slice(), postSeq: BLOG_POSTS_DEFAULT.length,
-    npFormOpen:false, npEditId:null, npTitle:'', npExcerpt:'', npCat:'checklist', npCoverUrl:'',
-    payMethod:'vietqr', paySuccess:false, paySecs:900,
-    pTab:'overview', pAllowSignup:true, pSaved:false,
-    pSiteName:'Nhà Có Tiệc', pHotline:'09xx.xxx.xxx', pEmail:'cskh@nhacothiep.vn',
-    siteBadge:'🏆 Nền tảng thiệp số được yêu thích nhất 2026',
-    heroTitleMain:'Tấm thiệp cưới của bạn,', heroTitleEmphasis:'gửi bằng một đường link',
-    heroSubtitle:'Chọn mẫu, điền thông tin, thiệp tự render ngay trước mắt bạn. Khách mời mở link trên Zalo là thấy phong bì 3D bật ra, nhạc nền dịu dàng và nút chỉ đường tới hôn trường.',
-    footerTagline:'Nền tảng thiệp số tương tác tinh tế, lưu giữ trọn vẹn khoảnh khắc của bạn.',
-    featuredKicker:'Bộ sưu tập nổi bật', featuredTitle:'Chọn mẫu thiệp trong 10 giây',
-    demoKicker:'Trải nghiệm trực tiếp', demoTitle:'Bấm vỡ dấu sáp niêm phong',
-    demoBody:'Đây chính là khoảnh khắc khách mời của bạn nhìn thấy đầu tiên. Chạm thử con dấu sáp bên cạnh để cảm nhận hiệu ứng mở phong bì 3D.',
-    stepsKicker:'Quy trình', stepsTitle:'4 bước là có thiệp gửi khách',
-    whyKicker:'Khác biệt', whyTitle:'Vì sao cặp đôi chọn Nhà Có Tiệc ?',
-    testiKicker:'Câu chuyện thật', testiTitle:'Những đám cưới đã dùng thiệp của chúng tôi',
-    pricingKicker:'Bảng giá minh bạch', pricingTitle:'Miễn phí để thử, PRO khi cần trọn vẹn',
-    faqTitle:'Câu hỏi thường gặp',
-    ctaScript:'Ngày trọng đại xứng đáng một tấm thiệp riêng', ctaTitle:'Sẵn sàng tạo tấm thiệp cưới đặc biệt nhất cho ngày trọng đại của bạn?', ctaNote:'Không cần thẻ tín dụng · Xong trong 15 phút',
-    pFeatured:{1:true, 5:true}, pDisabled:{},
-    customTemplates:[], ntSeq:100, ntFormOpen:false, ntName:'', ntCoverUrl:'', ntOcc:'cuoi', ntSty:'luxury', ntCol:'gold', ntPro:true, ntAdded:false,
-    customOcc:{}, customSty:{}, customCol:{}, catSeq:1, newOccLabel:'', newStyLabel:'', newColLabel:'',
-    occAdding:false, styAdding:false, colAdding:false
+    blogCat:'all', nlEmail:'', nlSent:false
   };
 
   componentDidMount(){
@@ -1845,11 +1351,8 @@ class Component extends DCLogic {
     };
     window.addEventListener('scroll', this.onScroll, {passive:true});
     this.onScroll();
-    this.onResize = () => this.setState({winWidth: window.innerWidth});
-    window.addEventListener('resize', this.onResize);
-    this.payTimer = setInterval(() => { if (this.state.view === 'checkout' && this.state.paySecs > 0 && !this.state.paySuccess) this.setState(s => ({paySecs: s.paySecs - 1})); }, 1000);
   }
-  componentWillUnmount(){ clearInterval(this.t); clearInterval(this.payTimer); clearTimeout(this.closeTimer); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
+  componentWillUnmount(){ clearInterval(this.t); window.removeEventListener('scroll', this.onScroll); }
 
   chip(active){
     return 'padding:9px 15px;border-radius:' + this.rad + ';font-size:13px;cursor:pointer;white-space:nowrap;transition:all .18s;border:1px solid '
@@ -1864,50 +1367,26 @@ class Component extends DCLogic {
     }));
   }
 
-  allTemplates(){ return T.concat(this.state.customTemplates); }
-  getOcc(){ return {all:'Tất cả', ...OCC_NOALL, ...this.state.customOcc}; }
-  getOccNoAll(){ return {...OCC_NOALL, ...this.state.customOcc}; }
-  getSty(){ return {...STY, ...this.state.customSty}; }
-  getCol(){ return {...COL, ...this.state.customCol}; }
-  addCategory(kind, stateKey, labelKey){
-    const label = this.state[labelKey].trim();
-    if (!label) return;
-    const key = kind + '_' + this.state.catSeq;
-    this.setState({[stateKey]: {...this.state[stateKey], [key]: label}, catSeq: this.state.catSeq + 1, [labelKey]: ''});
-  }
-  removeCategory(stateKey, key){
-    const copy = {...this.state[stateKey]};
-    delete copy[key];
-    this.setState({[stateKey]: copy});
-  }
-
-  ntGroup(key, dict){
-    const s = this.state;
-    return Object.entries(dict).map(([v,label]) => ({
-      label, style: this.chip(s[key] === v), onClick: () => this.setState({[key]: v})
-    }));
-  }
-
   card(t){
     return {
-      ...t, slot:'tpl-' + t.id, slotSrc: t.cover || '',
+      ...t, slot:'tpl-' + t.id,
       badge: t.pro ? '👑 PRO' : '🆓 Miễn phí',
       badgeBg: t.pro ? 'linear-gradient(135deg,#FFD700,#FFA500)' : '#10B981',
       priceLabel: t.pro ? (t.price/1000) + '.000đ' : 'Miễn phí',
-      meta: [this.getOcc()[t.occ], this.getSty()[t.sty], EXP[t.exp]].join(' · ')
+      meta: [OCC[t.occ], STY[t.sty], EXP[t.exp]].join(' · ')
     };
   }
 
   filtered(){
     const s = this.state;
     const q = s.q.trim().toLowerCase();
-    let out = this.allTemplates().filter(t =>
+    let out = T.filter(t =>
       (s.occ==='all' || t.occ===s.occ) &&
       (s.sty==='all' || t.sty===s.sty) &&
       (s.col==='all' || t.col===s.col) &&
       (s.exp==='all' || t.exp===s.exp) &&
       (s.plan==='all' || (s.plan==='free' ? !t.pro : t.pro)) &&
-      (!q || (t.name + ' ' + this.getSty()[t.sty] + ' ' + this.getCol()[t.col] + ' ' + this.getOcc()[t.occ]).toLowerCase().includes(q))
+      (!q || (t.name + ' ' + STY[t.sty] + ' ' + COL[t.col] + ' ' + OCC[t.occ]).toLowerCase().includes(q))
     );
     const by = {
       hot:(a,b)=>parseFloat(b.uses)-parseFloat(a.uses),
@@ -1967,7 +1446,7 @@ class Component extends DCLogic {
       eCtaLabel: s.eStep === 5 ? '🚀 Xuất bản thiệp' : 'Tiếp tục →',
       eNext: () => s.eStep === 5 ? this.setState({ePublished:true}) : this.setState({eStep: s.eStep + 1}),
       ePrev: () => this.setState({eStep: Math.max(0, s.eStep - 1)}),
-      eTplPicks: this.allTemplates().slice(0,6).map(t=>{
+      eTplPicks: T.slice(0,6).map(t=>{
         const c = this.card(t);
         return {...c, slot:'ed-' + t.id, onClick: () => this.setState({eTpl:t.id}),
           wrap: 'padding:10px;border-radius:14px;cursor:pointer;transition:all .18s;border:1px solid '
@@ -2066,10 +1545,7 @@ class Component extends DCLogic {
       toggleTerms: () => this.setState({auTerms: !s.auTerms}),
       auCta: up ? 'Tạo tài khoản miễn phí' : 'Đăng nhập',
       auBtn: 'padding:15px;border-radius:' + this.rad + ';text-align:center;font-size:15px;font-weight:600;cursor:pointer;color:#fff;background:linear-gradient(135deg,' + this.accent + ',' + this.accentDeep + ');box-shadow:0 10px 24px rgba(30,34,41,.18)',
-      auSubmit: () => {
-        if (!up && s.auPhone.trim().toLowerCase().startsWith('admin')) { this.nav('dashboard'); return; }
-        this.setState({auDone:true});
-      },
+      auSubmit: () => this.setState({auDone:true}),
       auDone: s.auDone,
       auDoneMsg: up
         ? '🎉 Tài khoản đã tạo! Chúng tôi vừa gửi mã xác thực qua Zalo tới số ' + (s.auPhone || '09xx xxx xxx') + '.'
@@ -2081,175 +1557,26 @@ class Component extends DCLogic {
   }
   blogVals(){
     const s = this.state;
-    const list = s.blogCat === 'all' ? s.posts : s.posts.filter(p=>p.cat===s.blogCat);
+    const posts = [
+      {cat:'checklist', title:'Lộ trình 6 tháng chuẩn bị cưới cho cặp đôi đi làm', excerpt:'Chia nhỏ theo tuần, việc nào làm trước việc nào để sau — bám theo là không sót.', meta:'8 phút đọc · 12/07/2027'},
+      {cat:'loichuc', title:'100 lời chúc cưới cho bạn thân, đồng nghiệp và người lớn', excerpt:'Chọn sẵn theo mối quan hệ, copy là dùng được ngay trong thiệp hoặc phong bì.', meta:'6 phút đọc · 05/07/2027'},
+      {cat:'xuhuong', title:'Dresscode theo bảng màu: cách chọn cho khách mời', excerpt:'Bốn bảng màu đang được chọn nhiều nhất và cách viết dresscode để khách hiểu ngay.', meta:'5 phút đọc · 28/06/2027'},
+      {cat:'checklist', title:'Danh sách khách mời: chia bàn tiệc không lệch nhà nào', excerpt:'Cách nhóm khách theo bên và mức thân thiết, kèm mẹo xử lý khách đến muộn.', meta:'7 phút đọc · 20/06/2027'},
+      {cat:'thiepso', title:'Gửi thiệp qua Zalo sao cho người lớn cũng mở được', excerpt:'Kèm mẫu tin nhắn gửi cô dì chú bác và cách xử lý khi khách không thấy link.', meta:'4 phút đọc · 14/06/2027'},
+      {cat:'xuhuong', title:'Nhạc nền cho thiệp cưới: chọn bài nào cho vừa cảm xúc', excerpt:'Ba nhóm nhạc phổ biến và lý do bản piano thường an toàn nhất.', meta:'5 phút đọc · 02/06/2027'}
+    ].map((p,i)=>({...p, slot:'bg-' + i}));
+    const cats = {checklist:'Checklist', loichuc:'Lời chúc', xuhuong:'Xu hướng 2027', thiepso:'Thiệp số'};
+    const list = s.blogCat === 'all' ? posts : posts.filter(p=>p.cat===s.blogCat);
     return {
-      blogCats: [['all','Tất cả']].concat(Object.entries(BLOG_CATS)).map(([v,label])=>({
+      blogCats: [['all','Tất cả']].concat(Object.entries(cats)).map(([v,label])=>({
         label, style: this.chip(s.blogCat===v), onClick: ()=>this.setState({blogCat:v})
       })),
-      blogPosts: list.map(p=>({...p, cat: BLOG_CATS[p.cat], coverSrc: p.cover || ''})),
+      blogPosts: list.map(p=>({...p, cat: cats[p.cat]})),
       blogEmpty: list.length === 0,
       nlEmail: s.nlEmail,
       setNlEmail: e => this.setState({nlEmail: e.target.value}),
       nlCta: s.nlSent ? '✓ Đã đăng ký' : 'Đăng ký nhận',
       subscribe: () => this.setState({nlSent:true})
-    };
-  }
-
-  nav(view){
-    this.setState({view, menuOpen:false, mobileNavOpen:false});
-    window.scrollTo({top:0, left:0, behavior:'smooth'});
-  }
-
-  dashboardVals(){
-    const s = this.state;
-    const set = k => e => this.setState({[k]: e.target.value});
-    const badge = (bg, fg) => 'padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap;background:' + bg + ';color:' + fg;
-    const planBadge = plan => plan === 'PRO' ? badge('#FEF6E0','#9A741A') : badge('#F1F5F9','#475569');
-    const activeBadge = on => on ? badge('#ECFDF5','#047857') : badge('#F3F4F6','#6B7280');
-    const pubBadge = st => ({published: badge('#ECFDF5','#047857'), draft: badge('#FEF3C7','#92400E')})[st] || badge('#F3F4F6','#6B7280');
-    const orderBadge = st => ({success: badge('#ECFDF5','#047857'), pending: badge('#FEF3C7','#92400E'), refunded: badge('#FEF2F2','#B91C1C')})[st];
-    const maxRev = Math.max(...PLATFORM_REVENUE.map(r=>r.v));
-    const tabs = [['overview','Tổng quan'],['users','Người dùng'],['cards','Thiệp đã tạo'],['templates','Mẫu thiệp'],['posts','Bài viết'],['orders','Đơn hàng'],['settings','Cài đặt']];
-    return {
-      isDashboard: s.view === 'dashboard',
-      logoutAdmin: () => this.nav('home'),
-      pTabs: tabs.map(([v,label])=>({label, style: this.chip(s.pTab===v), onClick: ()=>this.setState({pTab:v})})),
-      pIsOverview: s.pTab==='overview', pIsUsers: s.pTab==='users', pIsCards: s.pTab==='cards',
-      pIsTemplates: s.pTab==='templates', pIsOrders: s.pTab==='orders', pIsSettings: s.pTab==='settings',
-      pIsPosts: s.pTab==='posts',
-      npFormOpen: s.npFormOpen, npTitle: s.npTitle, npExcerpt: s.npExcerpt, npCoverUrl: s.npCoverUrl,
-      npToggleLabel: s.npFormOpen ? 'Đóng' : '+ Thêm bài viết',
-      npToggleForm: () => this.setState({npFormOpen: !s.npFormOpen, npEditId:null, npTitle:'', npExcerpt:'', npCoverUrl:'', npCat:'checklist'}),
-      setNpTitle: e => this.setState({npTitle: e.target.value}),
-      setNpExcerpt: e => this.setState({npExcerpt: e.target.value}),
-      setNpCoverUrl: e => this.setState({npCoverUrl: e.target.value}),
-      npCatChips: Object.entries(BLOG_CATS).map(([v,label])=>({label, style: this.chip(s.npCat===v), onClick: ()=>this.setState({npCat:v})})),
-      npSubmitLabel: s.npEditId !== null ? 'Lưu bài viết' : 'Đăng bài viết',
-      npSubmit: () => {
-        if (!s.npTitle.trim()) return;
-        if (s.npEditId !== null) {
-          this.setState({posts: s.posts.map(p => p.id === s.npEditId ? {...p, title:s.npTitle.trim(), excerpt:s.npExcerpt.trim(), cat:s.npCat, cover:s.npCoverUrl.trim()} : p), npFormOpen:false, npEditId:null, npTitle:'', npExcerpt:'', npCoverUrl:''});
-        } else {
-          const id = s.postSeq;
-          const post = {id, cat:s.npCat, title:s.npTitle.trim(), excerpt:s.npExcerpt.trim(), meta:'Vừa đăng', slot:'bg-custom-'+id, cover:s.npCoverUrl.trim()};
-          this.setState({posts:[post, ...s.posts], postSeq:id+1, npFormOpen:false, npTitle:'', npExcerpt:'', npCoverUrl:''});
-        }
-      },
-      npPosts: s.posts.map(p => ({
-        ...p, catLabel: BLOG_CATS[p.cat],
-        onEdit: () => this.setState({npFormOpen:true, npEditId:p.id, npTitle:p.title, npExcerpt:p.excerpt, npCat:p.cat, npCoverUrl:p.cover||''}),
-        onDelete: () => this.setState({posts: s.posts.filter(x=>x.id!==p.id)})
-      })),
-      pStats: [
-        {label:'Tổng doanh thu', value:'408.000.000đ', delta:'▲ 12% so với tháng trước', deltaColor:'#10B981'},
-        {label:'Thiệp đã tạo', value:String(PLATFORM_CARDS.length * 187), delta:'▲ 34 trong tuần này', deltaColor:'#10B981'},
-        {label:'Người dùng đăng ký', value:'12.480', delta:'▲ 5.2% MoM', deltaColor:'#10B981'},
-        {label:'Tỉ lệ nâng cấp PRO', value:'38%', delta:'so với 33% quý trước', deltaColor:'#9A741A'}
-      ],
-      pRevenue: PLATFORM_REVENUE.map(r => ({m:r.m, label: r.v + 'tr', height: Math.round(r.v/maxRev*100) + '%'})),
-      pTopTemplates: this.allTemplates().slice().sort((a,b)=>parseFloat(b.uses)-parseFloat(a.uses)).slice(0,5).map(t=>({name:t.name, uses:t.uses})),
-      ntFormOpen: s.ntFormOpen, ntName: s.ntName, ntAdded: s.ntAdded,
-      ntCoverUrl: s.ntCoverUrl, setNtCoverUrl: e => this.setState({ntCoverUrl: e.target.value}),
-      newOccLabel: s.newOccLabel, newStyLabel: s.newStyLabel, newColLabel: s.newColLabel,
-      setNewOccLabel: e => this.setState({newOccLabel: e.target.value}),
-      setNewStyLabel: e => this.setState({newStyLabel: e.target.value}),
-      setNewColLabel: e => this.setState({newColLabel: e.target.value}),
-      occAdding: s.occAdding, occNotAdding: !s.occAdding,
-      styAdding: s.styAdding, styNotAdding: !s.styAdding,
-      colAdding: s.colAdding, colNotAdding: !s.colAdding,
-      startAddOcc: () => this.setState({occAdding:true}),
-      startAddSty: () => this.setState({styAdding:true}),
-      startAddCol: () => this.setState({colAdding:true}),
-      cancelAddOcc: () => this.setState({occAdding:false, newOccLabel:''}),
-      cancelAddSty: () => this.setState({styAdding:false, newStyLabel:''}),
-      cancelAddCol: () => this.setState({colAdding:false, newColLabel:''}),
-      confirmAddOcc: () => { this.addCategory('occ','customOcc','newOccLabel'); this.setState({occAdding:false}); },
-      confirmAddSty: () => { this.addCategory('sty','customSty','newStyLabel'); this.setState({styAdding:false}); },
-      confirmAddCol: () => { this.addCategory('col','customCol','newColLabel'); this.setState({colAdding:false}); },
-      ntToggleLabel: s.ntFormOpen ? 'Đóng' : '+ Thêm mẫu mới',
-      ntToggleForm: () => this.setState({ntFormOpen: !s.ntFormOpen}),
-      setNtName: e => this.setState({ntName: e.target.value}),
-      ntDraftSlot: 'tpl-' + s.ntSeq,
-      ntOccChips: this.ntGroup('ntOcc', this.getOccNoAll()),
-      ntStyChips: this.ntGroup('ntSty', this.getSty()),
-      ntColChips: this.ntGroup('ntCol', this.getCol()),
-      ntProSw: this.sw(s.ntPro), ntProKnob: this.knob(s.ntPro),
-      ntTogglePro: () => this.setState({ntPro: !s.ntPro}),
-      ntSubmit: () => {
-        const id = s.ntSeq;
-        const tpl = {id, name: s.ntName.trim() || 'Mẫu mới', occ: s.ntOcc, sty: s.ntSty, col: s.ntCol, exp:'scroll', pro: s.ntPro, price: s.ntPro ? 299000 : 0, uses:'0', rating:5.0, new:true, cover: s.ntCoverUrl.trim()};
-        this.setState({customTemplates:[...s.customTemplates, tpl], ntSeq: id + 1, ntName:'', ntCoverUrl:'', ntAdded:true});
-      },
-      pUsers: PLATFORM_USERS.map(u => ({...u, planBadge: planBadge(u.plan), status: u.status==='active' ? 'Hoạt động' : 'Ngừng', statusBadge: activeBadge(u.status==='active')})),
-      pCards: PLATFORM_CARDS.map(c => ({...c, planBadge: planBadge(c.plan), status: c.status==='published' ? 'Đã xuất bản' : 'Bản nháp', statusBadge: pubBadge(c.status)})),
-      pTemplates: this.allTemplates().map(t => {
-        const feat = !!s.pFeatured[t.id], act = !s.pDisabled[t.id];
-        return {
-          name:t.name, uses:t.uses, rating:t.rating,
-          badge: t.pro ? badge('linear-gradient(135deg,#FFD700,#FFA500)','#3A2C00') : badge('#ECFDF5','#047857'),
-          badgeLabel: t.pro ? 'PRO' : 'Miễn phí',
-          featSw: this.sw(feat), featKnob: this.knob(feat),
-          actSw: this.sw(act), actKnob: this.knob(act),
-          onToggleFeatured: () => this.setState({pFeatured: {...s.pFeatured, [t.id]: !feat}}),
-          onToggleActive: () => this.setState({pDisabled: {...s.pDisabled, [t.id]: act}})
-        };
-      }),
-      pOrders: PLATFORM_ORDERS.map(o => ({...o, status: {success:'Thành công', pending:'Đang xử lý', refunded:'Đã hoàn tiền'}[o.status], statusBadge: orderBadge(o.status)})),
-      pSiteName: s.pSiteName, pHotline: s.pHotline, pEmail: s.pEmail,
-      setPSiteName: set('pSiteName'), setPHotline: set('pHotline'), setPEmail: set('pEmail'),
-      siteBadge: s.siteBadge, heroTitleMain: s.heroTitleMain, heroTitleEmphasis: s.heroTitleEmphasis,
-      heroSubtitle: s.heroSubtitle, footerTagline: s.footerTagline, footerHotline: 'Hotline: ' + s.pHotline,
-      setSiteBadge: set('siteBadge'), setHeroTitleMain: set('heroTitleMain'), setHeroTitleEmphasis: set('heroTitleEmphasis'),
-      setHeroSubtitle: set('heroSubtitle'), setFooterTagline: set('footerTagline'),
-      featuredKicker: s.featuredKicker, featuredTitle: s.featuredTitle,
-      demoKicker: s.demoKicker, demoTitle: s.demoTitle, demoBody: s.demoBody,
-      stepsKicker: s.stepsKicker, stepsTitle: s.stepsTitle,
-      whyKicker: s.whyKicker, whyTitle: s.whyTitle,
-      testiKicker: s.testiKicker, testiTitle: s.testiTitle,
-      pricingKicker: s.pricingKicker, pricingTitle: s.pricingTitle,
-      faqTitle: s.faqTitle, ctaScript: s.ctaScript, ctaTitle: s.ctaTitle, ctaNote: s.ctaNote,
-      pSections: [
-        {title:'Mục "Bộ sưu tập nổi bật"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.featuredKicker, onChange:set('featuredKicker')},
-          {label:'Tiêu đề', value:s.featuredTitle, onChange:set('featuredTitle')}
-        ]},
-        {title:'Mục "Mở phong bì demo"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.demoKicker, onChange:set('demoKicker')},
-          {label:'Tiêu đề', value:s.demoTitle, onChange:set('demoTitle')},
-          {label:'Đoạn mô tả', value:s.demoBody, onChange:set('demoBody'), area:true}
-        ]},
-        {title:'Mục "Quy trình 4 bước"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.stepsKicker, onChange:set('stepsKicker')},
-          {label:'Tiêu đề', value:s.stepsTitle, onChange:set('stepsTitle')}
-        ]},
-        {title:'Mục "Vì sao chọn chúng tôi"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.whyKicker, onChange:set('whyKicker')},
-          {label:'Tiêu đề', value:s.whyTitle, onChange:set('whyTitle')}
-        ]},
-        {title:'Mục "Câu chuyện thật"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.testiKicker, onChange:set('testiKicker')},
-          {label:'Tiêu đề', value:s.testiTitle, onChange:set('testiTitle')}
-        ]},
-        {title:'Mục "Bảng giá"', fields:[
-          {label:'Dòng nhỏ (kicker)', value:s.pricingKicker, onChange:set('pricingKicker')},
-          {label:'Tiêu đề', value:s.pricingTitle, onChange:set('pricingTitle')}
-        ]},
-        {title:'Mục "FAQ"', fields:[
-          {label:'Tiêu đề', value:s.faqTitle, onChange:set('faqTitle')}
-        ]},
-        {title:'Mục "Kêu gọi hành động cuối trang"', fields:[
-          {label:'Dòng script nhỏ', value:s.ctaScript, onChange:set('ctaScript')},
-          {label:'Tiêu đề', value:s.ctaTitle, onChange:set('ctaTitle'), area:true},
-          {label:'Ghi chú nhỏ', value:s.ctaNote, onChange:set('ctaNote')}
-        ]}
-      ].map(sec => {
-        const inputCss = 'width:100%;padding:13px 16px;border:1px solid #E4DCC9;border-radius:12px;background:#FAF8F5;font-size:14.5px;outline:none;color:#1E2229';
-        return {...sec, fields: sec.fields.map(f => ({...f, notArea: !f.area, style:'font-size:12.5px;color:#4B5563;margin-bottom:7px', inputStyle: f.area ? inputCss + ';resize:none;line-height:1.7' : inputCss}))};
-      }),
-      pSignupSw: this.sw(s.pAllowSignup), pSignupKnob: this.knob(s.pAllowSignup),
-      pToggleSignup: () => this.setState({pAllowSignup: !s.pAllowSignup}),
-      pSave: () => this.setState({pSaved:true}),
-      pSaved: s.pSaved
     };
   }
 
@@ -2277,44 +1604,12 @@ class Component extends DCLogic {
       isEditor: s.view === 'editor',
       isAdmin: s.view === 'admin',
       isAuth: s.view === 'auth',
-      isCheckout: s.view === 'checkout',
-      goCheckout: () => this.nav('checkout'),
-      payMethods: [['vietqr','VietQR'],['momo','MoMo'],['card','Thẻ ATM/Visa']].map(([v,label])=>({
-        label, style: this.chip(s.payMethod===v), onClick: ()=>this.setState({payMethod:v})
-      })),
-      payShowQr: s.payMethod === 'vietqr' || s.payMethod === 'momo',
-      payShowCard: s.payMethod === 'card',
-      payMethodName: {vietqr:'ngân hàng bất kỳ', momo:'MoMo', card:'thẻ'}[s.payMethod],
-      payCountdown: String(Math.floor(s.paySecs/60)).padStart(2,'0') + ':' + String(s.paySecs%60).padStart(2,'0'),
-      payCtaLabel: s.paySuccess ? '✓ Đã thanh toán' : 'Tôi đã thanh toán, xác nhận ngay',
-      payConfirm: () => this.setState({paySuccess:true}),
-      paySuccess: s.paySuccess,
-      showFab: s.view !== 'auth' && s.view !== 'editor' && s.view !== 'checkout' && (s.view !== 'home' || s.fabVisible),
-      isDesktopNav: s.winWidth >= 1040,
-      isMobileNav: s.winWidth < 1040,
-      mobileNavOpen: s.mobileNavOpen,
-      mobileSearchOpen: s.mobileSearchOpen,
-      mobileNavIcon: s.mobileNavOpen ? '✕' : '☰',
-      toggleMobileNav: () => this.setState({mobileNavOpen: !s.mobileNavOpen, mobileSearchOpen:false}),
-      toggleMobileSearch: () => this.setState({mobileSearchOpen: !s.mobileSearchOpen, mobileNavOpen:false}),
-      tapKhoMau: () => this.setState({menuOpen: !s.menuOpen}),
-      tapEditor: () => this.nav('editor'),
-      tapAdmin: () => this.nav('admin'),
-      tapPricing: () => { this.setState({view:'home', mobileNavOpen:false}); setTimeout(()=>{ const el = document.getElementById('pricing'); if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth'}); }, 60); },
-      tapBlog: () => this.nav('blog'),
-      tapFaq: () => { this.setState({view:'home', mobileNavOpen:false}); setTimeout(()=>{ const el = document.getElementById('faq'); if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth'}); }, 60); },
-      tapAuth: () => this.nav('auth'),
-      openMenu: () => { clearTimeout(this.closeTimer); this.setState({menuOpen:true}); },
-      scheduleCloseMenu: () => { clearTimeout(this.closeTimer); this.closeTimer = setTimeout(() => this.setState({menuOpen:false}), 180); },
-      arrowRotate: s.menuOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-      dropStyle: s.menuOpen
-        ? 'opacity:1;visibility:visible;transform:translateY(0);transition:opacity .18s ease,transform .18s ease;'
-        : 'opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .15s ease,transform .15s ease,visibility 0s .15s;',
+      showFab: s.view !== 'auth' && s.view !== 'editor' && (s.view !== 'home' || s.fabVisible),
       isBlog: s.view === 'blog',
-      goEditor: () => this.nav('editor'),
-      goAdmin: () => this.nav('admin'),
-      goAuth: () => this.nav('auth'),
-      goBlog: () => this.nav('blog'),
+      goEditor: () => this.setState({view:'editor', menuOpen:false}),
+      goAdmin: () => this.setState({view:'admin', menuOpen:false}),
+      goAuth: () => this.setState({view:'auth', menuOpen:false}),
+      goBlog: () => this.setState({view:'blog', menuOpen:false}),
       goFaq: () => {
         this.setState({view:'home', menuOpen:false});
         setTimeout(()=>{ const el = document.getElementById('faq'); if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth'}); }, 60);
@@ -2323,22 +1618,21 @@ class Component extends DCLogic {
       ...this.adminVals(),
       ...this.authVals(),
       ...this.blogVals(),
-      ...this.dashboardVals(),
       q: s.q,
       setQ: e => this.setState({q: e.target.value}),
       menuOpen: s.menuOpen,
       toggleMenu: () => this.setState({menuOpen: !s.menuOpen}),
-      goHome: () => this.nav('home'),
-      goTemplates: () => this.nav('templates'),
-      goCard: () => this.nav('card'),
+      goHome: () => this.setState({view:'home', menuOpen:false}),
+      goTemplates: () => this.setState({view:'templates', menuOpen:false}),
+      goCard: () => this.setState({view:'card', menuOpen:false}),
       goPricing: () => {
         this.setState({view:'home', menuOpen:false});
         setTimeout(()=>{ const el = document.getElementById('pricing'); if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth'}); }, 60);
       },
 
-      occChips: this.group('occ', this.getOcc(), true),
-      styChips: this.group('sty', this.getSty(), false),
-      colChips: this.group('col', this.getCol(), false),
+      occChips: this.group('occ', OCC, true),
+      styChips: this.group('sty', STY, false),
+      colChips: this.group('col', COL, false),
       expChips: this.group('exp', EXP, false),
       planChips: this.group('plan', {free:'🆓 Mẫu miễn phí (0đ)', pro:'👑 Mẫu bản quyền PRO'}, false),
       sortChips: [['hot','🔥 Dùng nhiều nhất'],['new','✨ Mới nhất'],['rate','⭐ Đánh giá cao'],['price','💰 Giá thấp → cao']].map(([v,label])=>({
