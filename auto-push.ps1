@@ -16,7 +16,7 @@ $watcher.Filter = "*.*"
 $watcher.NotifyFilter = [System.IO.NotifyFilters]'FileName, LastWrite, DirectoryName, Size'
 $watcher.EnableRaisingEvents = $true
 
-$global:lastChange = $null
+$global:lastChange = Get-Date
 
 $action = {
     $path = $Event.SourceEventArgs.FullPath
@@ -41,9 +41,9 @@ while ($true) {
         $status = git status --porcelain
         if ($status) {
             $msg = "Auto-update " + (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
-            git commit -m "$msg" *>> $logFile
-            git pull --rebase --autostash *>> $logFile
-            $pushResult = git push *>> $logFile
+            cmd /c "git commit -m `"$msg`" >> `"$logFile`" 2>&1"
+            cmd /c "git pull --rebase --autostash >> `"$logFile`" 2>&1"
+            cmd /c "git push >> `"$logFile`" 2>&1"
             Write-Log "Pushed changes."
         }
     }
