@@ -703,7 +703,7 @@ input,textarea,button,select{font-family:inherit}
               <div>
                 <div style="{{ eLbl }}">Đường dẫn thiệp</div>
                 <div style="display:flex;gap:8px;align-items:center;background:#FAF8F5;border:1px solid #EFE7DA;border-radius:12px;padding:13px 16px">
-                  <div style="font-size:14px;color:#9CA3AF">nhacothiep.vn/</div>
+                  <div style="font-size:14px;color:#9CA3AF">nhacotiec.vn/</div>
                   <input value="{{ eSlug }}" onChange="{{ setSlug }}" style="border:none;background:transparent;outline:none;font-size:14px;color:#1E2229;flex:1;font-weight:600">
                   <div style="font-size:12px;color:#10B981;white-space:nowrap">✓ Còn trống</div>
                 </div>
@@ -766,7 +766,7 @@ input,textarea,button,select{font-family:inherit}
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px">
         <div>
           <h1 style="font-family: Times New Roman; font-size: 20px; color: #1E2229; margin: 0 0 6px">Thiệp cưới Long &amp; Phương</h1>
-          <div style="font-size:14.5px">nhacothiep.vn/long-phuong · Xuất bản 12/06/2027 · <span style="color:#10B981">● Đang hoạt động</span></div>
+          <div style="font-size:14.5px">nhacotiec.vn/long-phuong · Xuất bản 12/06/2027 · <span style="color:#10B981">● Đang hoạt động</span></div>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <div onClick="{{ goEditor }}" style="padding:12px 20px;border:1px solid #DCD2C0;border-radius:999px;font-size:14px;cursor:pointer;background:#fff" style-hover="border-color:#D4AF37;color:#9A741A">✎ Sửa thiệp</div>
@@ -1464,7 +1464,7 @@ input,textarea,button,select{font-family:inherit}
 <div style="min-height:100vh;background:radial-gradient(circle at 50% 0%,#2D3142,#12151C);padding:clamp(14px,3vw,34px) 16px;display:flex;flex-direction:column;align-items:center;gap:18px">
   <div style="width:100%;max-width:430px;display:flex;align-items:center;justify-content:space-between;gap:12px">
     <div onClick="{{ goHome }}" style="color:#D9D4C8;font-size:13.5px;cursor:pointer;padding:8px 14px;border:1px solid #3A3F4C;border-radius:999px" style-hover="color:#D4AF37;border-color:#D4AF37">← Về website</div>
-    <div style="color:#767166;font-size:12px">nhacothiep.vn/long-phuong?to=anh-Minh</div>
+    <div style="color:#767166;font-size:12px">nhacotiec.vn/long-phuong?to=anh-Minh</div>
   </div>
 
   <div style="position:relative;width:100%;max-width:430px;height:min(78vh,780px);border-radius:38px;background:#0B0D12;padding:10px;box-shadow:0 50px 90px -34px rgba(0,0,0,.8);border:1px solid #262B36">
@@ -1727,12 +1727,12 @@ const PLATFORM_USERS = [
   {name:'Nam & Thảo', phone:'090x xxx 008', plan:'PRO', cards:1, joined:'07/2027', status:'inactive'}
 ];
 const PLATFORM_CARDS = [
-  {couple:'Long & Phương', slug:'nhacothiep.vn/long-phuong', views:2839, rsvp:412, plan:'PRO', status:'published'},
-  {couple:'Minh & Trang', slug:'nhacothiep.vn/minh-trang', views:1920, rsvp:280, plan:'PRO', status:'published'},
-  {couple:'Hoàng & Vy', slug:'nhacothiep.vn/hoang-vy', views:640, rsvp:95, plan:'Miễn phí', status:'published'},
-  {couple:'Khoa & Ngân', slug:'nhacothiep.vn/khoa-ngan', views:1140, rsvp:160, plan:'PRO', status:'draft'},
-  {couple:'Đức & An', slug:'nhacothiep.vn/duc-an', views:88, rsvp:12, plan:'Miễn phí', status:'draft'},
-  {couple:'Tú & Hằng', slug:'nhacothiep.vn/tu-hang', views:1505, rsvp:210, plan:'PRO', status:'published'}
+  {couple:'Long & Phương', slug:'nhacotiec.vn/long-phuong', views:2839, rsvp:412, plan:'PRO', status:'published'},
+  {couple:'Minh & Trang', slug:'nhacotiec.vn/minh-trang', views:1920, rsvp:280, plan:'PRO', status:'published'},
+  {couple:'Hoàng & Vy', slug:'nhacotiec.vn/hoang-vy', views:640, rsvp:95, plan:'Miễn phí', status:'published'},
+  {couple:'Khoa & Ngân', slug:'nhacotiec.vn/khoa-ngan', views:1140, rsvp:160, plan:'PRO', status:'draft'},
+  {couple:'Đức & An', slug:'nhacotiec.vn/duc-an', views:88, rsvp:12, plan:'Miễn phí', status:'draft'},
+  {couple:'Tú & Hằng', slug:'nhacotiec.vn/tu-hang', views:1505, rsvp:210, plan:'PRO', status:'published'}
 ];
 const PLATFORM_ORDERS = [
   {id:'#DH1042', name:'Khoa & Ngân', amount:'399.000đ', method:'MoMo', date:'27/08/2027', status:'success'},
@@ -1817,7 +1817,7 @@ class Component extends DCLogic {
     npFormOpen:false, npEditId:null, npTitle:'', npExcerpt:'', npCat:'checklist', npCoverUrl:'',
     payMethod:'vietqr', paySuccess:false, paySecs:900,
     pTab:'overview', pAllowSignup:true, pSaved:false,
-    pSiteName:'Nhà Có Tiệc', pHotline:'09xx.xxx.xxx', pEmail:'cskh@nhacothiep.vn',
+    pSiteName:'Nhà Có Tiệc', pHotline:'09xx.xxx.xxx', pEmail:'cskh@nhacotiec.vn',
     siteBadge:'🏆 Nền tảng thiệp số được yêu thích nhất 2026',
     heroTitleMain:'Tấm thiệp cưới của bạn,', heroTitleEmphasis:'gửi bằng một đường link',
     heroSubtitle:'Chọn mẫu, điền thông tin, thiệp tự render ngay trước mắt bạn. Khách mời mở link trên Zalo là thấy phong bì 3D bật ra, nhạc nền dịu dàng và nút chỉ đường tới hôn trường.',
@@ -1993,9 +1993,9 @@ class Component extends DCLogic {
       toggleQrOn: () => this.setState({eQrOn: !s.eQrOn}),
       toggleRsvpOn: () => this.setState({eRsvpOn: !s.eRsvpOn}),
       eGuestLinks: [
-        {name:'Anh Minh', url:'nhacothiep.vn/' + s.eSlug + '?to=anh-Minh'},
-        {name:'Gia đình cô Tám', url:'nhacothiep.vn/' + s.eSlug + '?to=gia-dinh-co-Tam'},
-        {name:'Chị Thu Hà', url:'nhacothiep.vn/' + s.eSlug + '?to=chi-Thu-Ha'}
+        {name:'Anh Minh', url:'nhacotiec.vn/' + s.eSlug + '?to=anh-Minh'},
+        {name:'Gia đình cô Tám', url:'nhacotiec.vn/' + s.eSlug + '?to=gia-dinh-co-Tam'},
+        {name:'Chị Thu Hà', url:'nhacotiec.vn/' + s.eSlug + '?to=chi-Thu-Ha'}
       ],
       ePublished: s.ePublished
     };
